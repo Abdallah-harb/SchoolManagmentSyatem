@@ -13,4 +13,5 @@ interface AuthInterface
     public function verifyEmail(array  $data);
     public function resendCode(array $data);
 
+
 }

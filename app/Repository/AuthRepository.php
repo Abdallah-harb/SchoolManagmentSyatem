@@ -31,6 +31,7 @@ class AuthRepository implements AuthInterface
         }
         return jsonResponse(["item" => new UserResource($item),'code_sent' => $sent]);
     }
+
    final public function verifyEmail(array $data)
     {
         $user = $this->module->whereEmail($data['email'])->first();
@@ -62,7 +63,7 @@ class AuthRepository implements AuthInterface
         $user = $this->module->whereEmail($data['email'])->first();
         $token = $user->createToken($data['email'].'admin')->plainTextToken;
         $user->token = $token;
-        if (!$user->hasVerifiedEmail()) {
+        if(!$user->hasVerifiedEmail()) {
             auth('api')->logout();
             return jsonResponse([],'email Not verified',
                 Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -70,10 +71,7 @@ class AuthRepository implements AuthInterface
         return jsonResponse(["item" => new UserResource($user)]);
     }
 
-
-
     final public function logout(){
-
         auth('api')->User()->currentAccessToken()->delete();
         return jsonResponse(null,'logout successfully');
     }

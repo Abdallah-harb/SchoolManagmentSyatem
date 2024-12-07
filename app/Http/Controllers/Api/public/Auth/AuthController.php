@@ -36,6 +36,9 @@ class AuthController extends Controller
         return $this->repository->login($request->validated());
      }
 
+     final public function changePassword(){
+
+     }
      final public function logout(){
         return $this->repository->logout();
      }

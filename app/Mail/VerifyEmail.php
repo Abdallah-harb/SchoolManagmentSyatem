@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\URL;
 
 class VerifyEmail extends Notification
-{/**
+{
+
+    /**
  * The callback that should be used to create the verify email URL.
  *
  * @var \Closure|null
